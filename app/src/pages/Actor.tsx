@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import {
-  getActorById,
-  GetActorByIdResponse,
-} from '@movie/dataconnect';
+// import {
+//   getActorById,
+//   GetActorByIdResponse,
+// } from '@movie/dataconnect';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { AuthContext } from '@/lib/firebase';
 import NotFound from './NotFound';
@@ -16,8 +16,8 @@ export default function ActorPage() {
   const actorId = id || '';
   const [, setAuthUser] = useState<User | null>(null);
 
-
-  const [actor, setActor] = useState<GetActorByIdResponse['actor'] | null>(null);
+  const [actor, setActor] = useState(null);
+  // const [actor, setActor] = useState<GetActorByIdResponse['actor'] | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,25 +30,25 @@ export default function ActorPage() {
   }, [auth, actorId]);
 
   useEffect(() => {
-    if (actorId) {
-      const fetchActor = async () => {
-        try {
-          const response = await getActorById({ id: actorId });
-          if (response.data.actor) {
-            setActor(response.data.actor);
-          } else {
-            navigate('/not-found');
-          }
-        } catch (error) {
-          console.error('Error fetching actor:', error);
-          navigate('/not-found');
-        } finally {
-          setLoading(false);
-        }
-      };
+    // if (actorId) {
+    //   const fetchActor = async () => {
+    //     try {
+    //       const response = await getActorById({ id: actorId });
+    //       if (response.data.actor) {
+    //         setActor(response.data.actor);
+    //       } else {
+    //         navigate('/not-found');
+    //       }
+    //     } catch (error) {
+    //       console.error('Error fetching actor:', error);
+    //       navigate('/not-found');
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
 
-      fetchActor();
-    }
+    //   fetchActor();
+    // }
   }, [actorId, navigate]);
 
   if (loading) return <p>Loading...</p>;

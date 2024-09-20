@@ -20,16 +20,16 @@ export default function MyProfilePage() {
   // const [user, setUser] = useState<GetCurrentUserResponse['user'] | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthUser(user);
-        fetchUserProfile();
-      } else {
-        navigate('/');
-      }
-    });
+    // const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     setAuthUser(user);
+    //     fetchUserProfile();
+    //   } else {
+    //     navigate('/');
+    //   }
+    // });
 
-    return () => unsubscribe();
+    // return () => unsubscribe();
   }, [navigate, auth]);
 
   async function fetchUserProfile() {
