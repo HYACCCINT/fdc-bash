@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdFavorite, MdFavoriteBorder, MdStar } from 'react-icons/md';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { addFavoritedMovie, deleteFavoritedMovie, getIfFavoritedMovie } from '@movie/dataconnect';
+// import { addFavoritedMovie, deleteFavoritedMovie, getIfFavoritedMovie } from '@movie/dataconnect';
 import { AuthContext } from '@/lib/firebase';
 
 interface MovieCardProps {
@@ -22,45 +22,46 @@ export default function MovieCard({
   genre,
   tags
 }: MovieCardProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState<User | null>(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      async function checkIfFavorited() {
-        try {
-          const response = await getIfFavoritedMovie({ movieId: id });
-          setIsFavorited(!!response.data.favorite_movie);
-        } catch (error) {
-          console.error('Error checking if favorited:', error);
-        }
-      }
-      if (user) {
-        setUser(user);
-        checkIfFavorited();
-      }
-    });
+    // const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //   async function checkIfFavorited() {
+    //     try {
+    //       const response = await getIfFavoritedMovie({ movieId: id });
+    //       setIsFavorited(!!response.data.favorite_movie);
+    //     } catch (error) {
+    //       console.error('Error checking if favorited:', error);
+    //     }
+    //   }
+    //   if (user) {
+    //     setUser(user);
+    //     checkIfFavorited();
+    //   }
+    // });
 
-    return () => unsubscribe();
+    // return () => unsubscribe();
   }, [auth, id]);
 
 
   async function handleFavoriteToggle(e: React.MouseEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (!user) return;
-    try {
-      if (isFavorited) {
-        await deleteFavoritedMovie({ movieId: id });
-      } else {
-        await addFavoritedMovie({ movieId: id });
-      }
-      setIsFavorited(!isFavorited);
-    } catch (error) {
-      console.error('Error updating favorite status:', error);
-    }
+    // e.stopPropagation();
+    // e.preventDefault();
+    // if (!user) return;
+    // try {
+    //   if (isFavorited) {
+    //     await deleteFavoritedMovie({ movieId: id });
+    //   } else {
+    //     await addFavoritedMovie({ movieId: id });
+    //   }
+    //   setIsFavorited(!isFavorited);
+    // } catch (error) {
+    //   console.error('Error updating favorite status:', error);
+    // }
   }
 
   function capitalize(str: string) {
