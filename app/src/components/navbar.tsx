@@ -40,25 +40,6 @@ export default function Navbar() {
             <img src={firebaseLogo} alt="Firebase Logo" width={30} height={30} className="mr-2" />
             FriendlyMovies
           </Link>
-          <div className="relative group">
-            <button className="text-gray-200 hover:text-white">Genres</button>
-            <div className="absolute hidden group-hover:block bg-black text-white mt-1 rounded shadow-lg" style={{ minWidth: '150px' }}>
-              <div className="py-2">
-                <Link to="/genre/action" className="block px-4 py-2 hover:bg-gray-800">
-                  Action
-                </Link>
-                <Link to="/genre/crime" className="block px-4 py-2 hover:bg-gray-800">
-                  Crime
-                </Link>
-                <Link to="/genre/drama" className="block px-4 py-2 hover:bg-gray-800">
-                  Drama
-                </Link>
-                <Link to="/genre/sci-fi" className="block px-4 py-2 hover:bg-gray-800">
-                  Sci-Fi
-                </Link>
-              </div>
-            </div>
-          </div>
           <Link to="/vectorsearch" className="text-gray-200 hover:text-white">
             Vector Search
           </Link>

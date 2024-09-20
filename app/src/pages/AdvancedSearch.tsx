@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { MdStar } from 'react-icons/md';
-import { searchAll } from '@movie/dataconnect';
+// import { searchAll } from '@movie/dataconnect';
 
 const genres = ['', 'action', 'crime', 'drama', 'sci-fi', 'thriller', 'adventure'];
 
@@ -21,20 +21,20 @@ export default function AdvancedSearchPage() {
   async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const response = await searchAll({
-        input: searchQuery,
-        minYear: releaseYearRange.min,
-        maxYear: releaseYearRange.max,
-        minRating: ratingRange.min,
-        maxRating: ratingRange.max,
-        genre,
-      });
-      setResults({
-        moviesMatchingTitle: response.data.moviesMatchingTitle,
-        moviesMatchingDescription: response.data.moviesMatchingDescription,
-        actors: response.data.actorsMatchingName,
-        reviews: response.data.reviewsMatchingText,
-      });
+      // const response = await searchAll({
+      //   input: searchQuery,
+      //   minYear: releaseYearRange.min,
+      //   maxYear: releaseYearRange.max,
+      //   minRating: ratingRange.min,
+      //   maxRating: ratingRange.max,
+      //   genre,
+      // });
+      // setResults({
+      //   moviesMatchingTitle: response.data.moviesMatchingTitle,
+      //   moviesMatchingDescription: response.data.moviesMatchingDescription,
+      //   actors: response.data.actorsMatchingName,
+      //   reviews: response.data.reviewsMatchingText,
+      // });
     } catch (error) {
       console.error('Error fetching search results:', error);
     }

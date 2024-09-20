@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import {
-  getCurrentUser,
-  GetCurrentUserResponse,
-  deleteReview,
-  deleteFavoritedMovie,
-  deleteFavoritedActor,
-} from '@movie/dataconnect';
+// import {
+//   getCurrentUser,
+//   GetCurrentUserResponse,
+//   deleteReview,
+//   deleteFavoritedMovie,
+// } from '@movie/dataconnect';
 import { MdStar } from 'react-icons/md';
 import { AuthContext } from '@/lib/firebase';
 
@@ -17,7 +16,8 @@ export default function MyProfilePage() {
   const [loading, setLoading] = useState(true);
   const auth = useContext(AuthContext);
 
-  const [user, setUser] = useState<GetCurrentUserResponse['user'] | null>(null);
+  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState<GetCurrentUserResponse['user'] | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -44,33 +44,13 @@ export default function MyProfilePage() {
   }
 
   async function handleDeleteReview(reviewId: string) {
-    if (!authUser) return;
-    try {
-      await deleteReview({ movieId: reviewId });
-      fetchUserProfile();
-    } catch (error) {
-      console.error('Error deleting review:', error);
-    }
-  }
-
-  async function handleUnfavoriteMovie(movieId: string) {
-    if (!authUser) return;
-    try {
-      await deleteFavoritedMovie({ movieId });
-      fetchUserProfile();
-    } catch (error) {
-      console.error('Error unfavoriting movie:', error);
-    }
-  }
-
-  async function handleUnfavoriteActor(actorId: string) {
-    if (!authUser) return;
-    try {
-      await deleteFavoritedActor({ actorId });
-      fetchUserProfile();
-    } catch (error) {
-      console.error('Error unfavoriting actor:', error);
-    }
+    // if (!authUser) return;
+    // try {
+    //   await deleteReview({ movieId: reviewId });
+    //   fetchUserProfile();
+    // } catch (error) {
+    //   console.error('Error deleting review:', error);
+    // }
   }
 
   if (loading) return <p>Loading...</p>;
@@ -127,38 +107,11 @@ export default function MyProfilePage() {
                   ))}
                 </div>
               </div>
-              <button
-                onClick={() => handleUnfavoriteMovie(fav.movie.id)}
-                className="absolute bottom-2 right-2 text-red-500 hover:text-red-600"
-              >
-                Remove Favorite
-              </button>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-2">Favorite Actors</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {user.favoriteActors.map((favActor) => (
-            <div key={favActor.actor.id} className="bg-gray-800 rounded-lg overflow-scroll shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer relative max-h-80">
-              <Link to={`/actor/${favActor.actor.id}`}>
-                <img className="w-48 h-48 object-cover rounded-full mx-auto mt-4" src={favActor.actor.imageUrl} alt={favActor.actor.name} />
-              </Link>
-              <div className="p-4 text-center">
-                <h3 className="font-bold text-lg mb-1 text-white">{favActor.actor.name}</h3>
-              </div>
-              <button
-                onClick={() => handleUnfavoriteActor(favActor.actor.id)}
-                className="absolute bottom-2 right-2 text-red-500 hover:text-red-600"
-              >
-                Remove Favorite
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

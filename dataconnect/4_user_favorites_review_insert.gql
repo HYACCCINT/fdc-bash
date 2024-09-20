@@ -91,31 +91,4 @@ mutation {
       movieId: "550e8400-e29b-41d4-a716-446655440005"
     }
   ])
-
-  favorite_actor_insertMany(data: [
-    {
-      userId: "SnLgOC3lN4hcIl69s53cW0Q8R1T2",
-      actorId: "123e4567-e89b-12d3-a456-426614174000"
-    },
-    {
-      userId: "fep4fXpGWsaRpuphq9CIrBIXQ0S2",
-      actorId: "123e4567-e89b-12d3-a456-426614174001"
-    },
-    {
-      userId: "TBedjwCX0Jf955Uuoxk6k74sY0l1",
-      actorId: "123e4567-e89b-12d3-a456-426614174002"
-    },
-    {
-      userId: "SnLgOC3lN4hcIl69s53cW0Q8R1T2",
-      actorId: "123e4567-e89b-12d3-a456-426614174003"
-    },
-    {
-      userId: "fep4fXpGWsaRpuphq9CIrBIXQ0S2",
-      actorId: "123e4567-e89b-12d3-a456-426614174004"
-    },
-    {
-      userId: "TBedjwCX0Jf955Uuoxk6k74sY0l1",
-      actorId: "123e4567-e89b-12d3-a456-426614174005"
-    }
-  ])
 }

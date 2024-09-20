@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MdFavorite, MdFavoriteBorder, MdStar } from 'react-icons/md';
-import {
-  getMovieById,
-  GetMovieByIdResponse,
-  addFavoritedMovie,
-  deleteFavoritedMovie,
-  getIfFavoritedMovie,
-  addReview,
-  deleteReview,
-} from '@movie/dataconnect';
+// import {
+//   getMovieById,
+//   GetMovieByIdResponse,
+//   addFavoritedMovie,
+//   deleteFavoritedMovie,
+//   getIfFavoritedMovie,
+//   addReview,
+//   deleteReview,
+// } from '@movie/dataconnect';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { AuthContext } from '@/lib/firebase';
 import NotFound from './NotFound';
@@ -24,90 +24,92 @@ export default function MoviePage() {
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = useState(0);
 
+  const [movie, setMovie] = useState(null);
+  const [userReview, setUserReview] = useState(null);
 
-  const [movie, setMovie] = useState<GetMovieByIdResponse['movie'] | null>(null);
-  const [userReview, setUserReview] = useState<GetMovieByIdResponse['movie']['reviews'][0] | null>(null);
+  // const [movie, setMovie] = useState<GetMovieByIdResponse['movie'] | null>(null);
+  // const [userReview, setUserReview] = useState<GetMovieByIdResponse['movie']['reviews'][0] | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      async function checkIfFavorited() {
-        try {
-          const response = await getIfFavoritedMovie({ movieId: id });
-          setIsFavorited(!!response.data.favorite_movie);
-        } catch (error) {
-          console.error('Error checking if favorited:', error);
-        }
-      }
-      if (user) {
-        setAuthUser(user);
-        checkIfFavorited();
-      }
-    });
+    // const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //   async function checkIfFavorited() {
+    //     try {
+    //       const response = await getIfFavoritedMovie({ movieId: id });
+    //       setIsFavorited(!!response.data.favorite_movie);
+    //     } catch (error) {
+    //       console.error('Error checking if favorited:', error);
+    //     }
+    //   }
+    //   if (user) {
+    //     setAuthUser(user);
+    //     checkIfFavorited();
+    //   }
+    // });
 
-    return () => unsubscribe();
+    // return () => unsubscribe();
   }, [id, auth]);
 
   useEffect(() => {
-    if (id) {
-      const fetchMovie = async () => {
-        try {
-          const response = await getMovieById({ id });
-          setMovie(response.data.movie);
-          const userReview = response.data.movie.reviews.find(review => review.user.id === authUser?.uid);
-          setUserReview(userReview || null);
-        } catch (error) {
-          console.error('Error fetching movie:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
+    // if (id) {
+    //   const fetchMovie = async () => {
+    //     try {
+    //       const response = await getMovieById({ id });
+    //       setMovie(response.data.movie);
+    //       const userReview = response.data.movie.reviews.find(review => review.user.id === authUser?.uid);
+    //       setUserReview(userReview || null);
+    //     } catch (error) {
+    //       console.error('Error fetching movie:', error);
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
 
-      fetchMovie();
-    }
+    //   fetchMovie();
+    // }
   }, [id, authUser]);
 
   async function handleFavoriteToggle(e: React.MouseEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (!authUser) return;
-    try {
-      if (isFavorited) {
-        await deleteFavoritedMovie({ movieId: id });
-      } else {
-        await addFavoritedMovie({ movieId: id });
-      }
-      setIsFavorited(!isFavorited);
-    } catch (error) {
-      console.error('Error updating favorite status:', error);
-    }
+    // e.stopPropagation();
+    // e.preventDefault();
+    // if (!authUser) return;
+    // try {
+    //   if (isFavorited) {
+    //     await deleteFavoritedMovie({ movieId: id });
+    //   } else {
+    //     await addFavoritedMovie({ movieId: id });
+    //   }
+    //   setIsFavorited(!isFavorited);
+    // } catch (error) {
+    //   console.error('Error updating favorite status:', error);
+    // }
   }
 
   async function handleReviewSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!authUser) return;
-    try {
-      await addReview({ movieId: id, rating, reviewText });
-      setReviewText('');
-      setRating(0);
-      const updatedMovie = await getMovieById({ id });
-      setMovie(updatedMovie.data.movie);
-    } catch (error) {
-      console.error('Error adding review:', error);
-    }
+    // e.preventDefault();
+    // if (!authUser) return;
+    // try {
+    //   await addReview({ movieId: id, rating, reviewText });
+    //   setReviewText('');
+    //   setRating(0);
+    //   const updatedMovie = await getMovieById({ id });
+    //   setMovie(updatedMovie.data.movie);
+    // } catch (error) {
+    //   console.error('Error adding review:', error);
+    // }
   }
 
   async function handleReviewDelete(e: React.MouseEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (!authUser || !userReview) return;
-    try {
-      await deleteReview({ movieId: id });
-      setUserReview(null);
-      const updatedMovie = await getMovieById({ id });
-      setMovie(updatedMovie.data.movie);
-    } catch (error) {
-      console.error('Error deleting review:', error);
-    }
+    // e.stopPropagation();
+    // e.preventDefault();
+    // if (!authUser || !userReview) return;
+    // try {
+    //   await deleteReview({ movieId: id });
+    //   setUserReview(null);
+    //   const updatedMovie = await getMovieById({ id });
+    //   setMovie(updatedMovie.data.movie);
+    // } catch (error) {
+    //   console.error('Error deleting review:', error);
+    // }
   }
 
   if (loading) return <p>Loading...</p>;

@@ -3,6 +3,8 @@ import Carousel from '@/components/carousel';
 // import { listMovies, ListMoviesResponse } from '@movie/dataconnect';
 
 export default function HomePage() {
+  const [topMovies, setTopMovies] = useState([]);
+  const [latestMovies, setLatestMovies] = useState([]);
   // const [topMovies, setTopMovies] = useState<ListMoviesResponse["movies"]>([]);
   // const [latestMovies, setLatestMovies] = useState<ListMoviesResponse["movies"]>([]);
 
