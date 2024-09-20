@@ -36,7 +36,7 @@ npm install -g firebase-tools
 This repository contains the quickstart to get started with the functionalities of Data Connect.
 
 1. Clone this repository to your local machine.
-2. cd to the `dataconnect` folder, and initialize your Firebase project with `firebase init dataconnect`. Overwrite only dataconnect.yaml when prompted, do not overwrite any other dataconnect files.
+2. Initialize your Firebase project with `firebase init dataconnect`. Overwrite only dataconnect.yaml when prompted, do not overwrite any other dataconnect files.
 (Optional): If you intend on using other Firebase features, run `firebase init` instead, and select both DataConnect options as well as any feature you intend to use.
 3. Replace variables in `.env` with your project-specific values.
 4. Allow domains for Firebase Auth in your [project console](https://console.firebase.google.com/project/_/authentication/settings) (e.g. http://127.0.0.1).

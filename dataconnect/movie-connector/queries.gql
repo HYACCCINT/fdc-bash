@@ -1,16 +1,16 @@
 # List subset of fields for movies
-query ListMovies @auth(level: PUBLIC) {
-  movies{
-    id
-    title
-    imageUrl
-    releaseYear
-    genre
-    rating
-    tags
-    description
-  }
-}
+# query ListMovies @auth(level: PUBLIC) {
+#   movies{
+#     id
+#     title
+#     imageUrl
+#     releaseYear
+#     genre
+#     rating
+#     tags
+#     description
+#   }
+# }
 
 # List movies of a certain genre
 # query ListMoviesByGenre($genre: String!) @auth(level: PUBLIC) {
@@ -43,70 +43,70 @@ query ListMovies @auth(level: PUBLIC) {
 # }
 
 # Search for movies, actors, and reviews
-query SearchAll(
-  $input: String
-  $minYear: Int!
-  $maxYear: Int!
-  $minRating: Float!
-  $maxRating: Float!
-  $genre: String!
-) @auth(level: PUBLIC) {
-  moviesMatchingTitle: movies(
-    where: {
-      _and: [
-        { releaseYear: { ge: $minYear } }
-        { releaseYear: { le: $maxYear } }
-        { rating: { ge: $minRating } }
-        { rating: { le: $maxRating } }
-        { genre: { contains: $genre } }
-        { title: { contains: $input } }
-      ]
-    }
-  ) {
-    id
-    title
-    genre
-    rating
-    imageUrl
-  }
-  moviesMatchingDescription: movies(
-    where: {
-      _and: [
-        { releaseYear: { ge: $minYear } }
-        { releaseYear: { le: $maxYear } }
-        { rating: { ge: $minRating } }
-        { rating: { le: $maxRating } }
-        { genre: { contains: $genre } }
-        { description: { contains: $input } }
-      ]
-    }
-  ) {
-    id
-    title
-    genre
-    rating
-    imageUrl
-  }
-  actorsMatchingName: actors(where: { name: { contains: $input } }) {
-    id
-    name
-    imageUrl
-  }
-  reviewsMatchingText: reviews(where: { reviewText: { contains: $input } }) {
-    id
-    rating
-    reviewText
-    reviewDate
-    movie {
-      id
-      title
-    }
-    user {
-      id
-      username
-    }
-  }
-}
+# query SearchAll(
+#   $input: String
+#   $minYear: Int!
+#   $maxYear: Int!
+#   $minRating: Float!
+#   $maxRating: Float!
+#   $genre: String!
+# ) @auth(level: PUBLIC) {
+#   moviesMatchingTitle: movies(
+#     where: {
+#       _and: [
+#         { releaseYear: { ge: $minYear } }
+#         { releaseYear: { le: $maxYear } }
+#         { rating: { ge: $minRating } }
+#         { rating: { le: $maxRating } }
+#         { genre: { contains: $genre } }
+#         { title: { contains: $input } }
+#       ]
+#     }
+#   ) {
+#     id
+#     title
+#     genre
+#     rating
+#     imageUrl
+#   }
+#   moviesMatchingDescription: movies(
+#     where: {
+#       _and: [
+#         { releaseYear: { ge: $minYear } }
+#         { releaseYear: { le: $maxYear } }
+#         { rating: { ge: $minRating } }
+#         { rating: { le: $maxRating } }
+#         { genre: { contains: $genre } }
+#         { description: { contains: $input } }
+#       ]
+#     }
+#   ) {
+#     id
+#     title
+#     genre
+#     rating
+#     imageUrl
+#   }
+#   actorsMatchingName: actors(where: { name: { contains: $input } }) {
+#     id
+#     name
+#     imageUrl
+#   }
+#   reviewsMatchingText: reviews(where: { reviewText: { contains: $input } }) {
+#     id
+#     rating
+#     reviewText
+#     reviewDate
+#     movie {
+#       id
+#       title
+#     }
+#     user {
+#       id
+#       username
+#     }
+#   }
+# }
 
 # Search movie descriptions using L2 similarity with Vertex AI
 # query SearchMovieDescriptionUsingL2Similarity($query: String!)
