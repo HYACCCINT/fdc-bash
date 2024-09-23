@@ -4,6 +4,7 @@ import {
   connectDataConnectEmulator,
   getDataConnect,
 } from "firebase/data-connect";
+import { connectorConfig } from '@movie/dataconnect';
 import { createContext } from "react";
 
 const firebaseConfig = {
@@ -19,11 +20,7 @@ const firebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
 const auth = getAuth(firebaseApp);
-const dataconnect = getDataConnect(firebaseApp, {
-  connector: "movie-connector",
-  service: "your-service",
-  location: "us-central1",
-});
+const dataconnect = getDataConnect(firebaseApp, connectorConfig);
 
 if (process.env.NODE_ENV === "development") {
   connectDataConnectEmulator(dataconnect, "127.0.0.1", 9399, false);
