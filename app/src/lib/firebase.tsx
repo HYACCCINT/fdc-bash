@@ -21,13 +21,13 @@ const firebaseApp =
 const auth = getAuth(firebaseApp);
 const dataconnect = getDataConnect(firebaseApp, {
   connector: "movie-connector",
-  service: "your-service-name",
-  location: "your-location",
+  service: "your-service",
+  location: "us-central1",
 });
 
 if (process.env.NODE_ENV === "development") {
-  // connectDataConnectEmulator(dataconnect, "127.0.0.1", 9399, false);
-  // connectAuthEmulator(auth, "http://localhost:9099");
+  connectDataConnectEmulator(dataconnect, "127.0.0.1", 9399, false);
+  connectAuthEmulator(auth, "http://localhost:9099");
 }
 
 const AuthContext = createContext(auth);
