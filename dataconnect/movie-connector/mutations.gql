@@ -37,7 +37,7 @@
 #   $rating: Int!
 #   $reviewText: String!
 #   $userId: String!
-# ) @auth(expr: "auth.uid != null && auth.uid == userId") {
+# ) @auth(level: USER) {
 
 # }
 

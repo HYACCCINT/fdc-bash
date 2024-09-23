@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged, User } from 'firebase/auth';
-// import {
-//   getCurrentUser,
-//   GetCurrentUserResponse,
-//   deleteReview,
-//   deleteFavoritedMovie,
-// } from '@movie/dataconnect';
+import { handleGetCurrentUser, handleDeleteReview } from '@/lib/MovieService';
 import { MdStar } from 'react-icons/md';
 import { AuthContext } from '@/lib/firebase';
 
@@ -17,40 +12,39 @@ export default function MyProfilePage() {
   const auth = useContext(AuthContext);
 
   const [user, setUser] = useState(null);
-  // const [user, setUser] = useState<GetCurrentUserResponse['user'] | null>(null);
 
   useEffect(() => {
-    // const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     setAuthUser(user);
-    //     fetchUserProfile();
-    //   } else {
-    //     navigate('/');
-    //   }
-    // });
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+        loadUserProfile();
+      } else {
+        navigate('/');
+      }
+    });
 
-    // return () => unsubscribe();
+    return () => unsubscribe();
   }, [navigate, auth]);
 
-  async function fetchUserProfile() {
-    // try {
-    //   const response = await getCurrentUser();
-    //   setUser(response.data.user);
-    // } catch (error) {
-    //   console.error('Error fetching user:', error);
-    // } finally {
-    //   setLoading(false);
-    // }
+  async function loadUserProfile() {
+    try {
+      const userProfile = await handleGetCurrentUser();
+      setUser(userProfile);
+    } catch (error) {
+      console.error('Error loading user profile:', error);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  async function handleDeleteReview(reviewId: string) {
-    // if (!authUser) return;
-    // try {
-    //   await deleteReview({ movieId: reviewId });
-    //   fetchUserProfile();
-    // } catch (error) {
-    //   console.error('Error deleting review:', error);
-    // }
+  async function deleteReview(reviewId: string) {
+    if (!authUser) return;
+    try {
+      await handleDeleteReview(reviewId);
+      loadUserProfile();
+    } catch (error) {
+      console.error('Error deleting review:', error);
+    }
   }
 
   if (loading) return <p>Loading...</p>;
@@ -75,7 +69,7 @@ export default function MyProfilePage() {
               <p className="text-sm text-gray-400 mb-2">{review.reviewDate}</p>
               <p className="text-sm text-gray-300">{review.reviewText}</p>
               <button
-                onClick={() => handleDeleteReview(review.id)}
+                onClick={() => deleteReview(review.id)}
                 className="absolute bottom-2 right-2 text-red-500 hover:text-red-600"
               >
                 Delete Review

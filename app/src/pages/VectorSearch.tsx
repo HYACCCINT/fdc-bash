@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
-import { searchMovieDescriptionUsingL2similarity, SearchMovieDescriptionUsingL2similarityResponse } from '@movie/dataconnect';
+import { searchMoviesByDescription } from '@/lib/MovieService';
 import { FaSpinner } from 'react-icons/fa';
 
 export default function VectorSearchPage() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const [results, setResults] = useState<SearchMovieDescriptionUsingL2similarityResponse['movies_descriptionEmbedding_similarity']>([]);
+  const [results, setResults] = useState([]);
 
   async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
-    // e.preventDefault();
-    // setLoading(true);
-    // try {
-    //   const response = await searchMovieDescriptionUsingL2similarity({ query });
-    //   setResults(response.data.movies_descriptionEmbedding_similarity);
-    // } catch (error) {
-    //   console.error('Error fetching movie descriptions:', error);
-    // } finally {
-    //   setLoading(false);
-    // }
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const searchResults = await searchMoviesByDescription(query);
+      if (searchResults) {
+        setResults(searchResults);
+      }
+    } catch (error) {
+      console.error('Error fetching movie descriptions:', error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
