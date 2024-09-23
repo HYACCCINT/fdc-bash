@@ -2,3 +2,4 @@
 dataconnect/.dataconnect
 app/src/lib/dataconnect/
 dataconnect/node_modules/
+.firebase/

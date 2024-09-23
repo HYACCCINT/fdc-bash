@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
 import { AuthContext } from '@/lib/firebase';
 import { Link } from 'react-router-dom';
-import { handleGetCurrentUser } from '@/lib/MovieService';
+import { handleAuthStateChange } from '@/lib/MovieService';
 import { FaSearch } from 'react-icons/fa';
 import firebaseLogo from '@/assets/firebase_logo.svg';
 
@@ -10,16 +10,9 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const auth = useContext(AuthContext);
 
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        setUser(user);
-        const currentUser = await handleGetCurrentUser(); // Fetch user profile on authentication
-        console.log('Fetched User Profile:', currentUser);
-      } else {
-        setUser(null);
-      }
-    });
+    const unsubscribe = handleAuthStateChange(auth, setUser);
     return () => unsubscribe();
   }, [auth]);
 
