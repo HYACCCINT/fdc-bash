@@ -12,7 +12,7 @@
 //   searchMovieDescriptionUsingL2similarity,
 //   SearchMovieDescriptionUsingL2similarityResponse,
 // } from "@movie/dataconnect";
-// import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 // import { upsertUser } from '@movie/dataconnect';
 
 // Fetch top-rated movies
