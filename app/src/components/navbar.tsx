@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
 import { AuthContext } from '@/lib/firebase';
 import { Link } from 'react-router-dom';
-// import { upsertUser } from '@movie/dataconnect';
+import { handleGetCurrentUser } from '@/lib/MovieService';
 import { FaSearch } from 'react-icons/fa';
 import firebaseLogo from '@/assets/firebase_logo.svg';
 
@@ -11,16 +11,16 @@ export default function Navbar() {
   const auth = useContext(AuthContext);
 
   useEffect(() => {
-    // const unsubscribe = onAuthStateChanged(auth, async (user) => {
-    //   if (user) {
-    //     setUser(user);
-    //     const username = user.email?.substring(0, user.email?.indexOf("@")) || 'anon';
-    //     await upsertUser({ username });
-    //   } else {
-    //     setUser(null);
-    //   }
-    // });
-    // return () => unsubscribe();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUser(user);
+        const currentUser = await handleGetCurrentUser(); // Fetch user profile on authentication
+        console.log('Fetched User Profile:', currentUser);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
   }, [auth]);
 
   async function handleSignIn() {

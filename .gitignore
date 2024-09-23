@@ -1,4 +1,4 @@
 .DS_Store
 dataconnect/.dataconnect
-app/src/lib/dataconnect
-dataconnect/node_modules
+app/src/lib/dataconnect/
+dataconnect/node_modules/

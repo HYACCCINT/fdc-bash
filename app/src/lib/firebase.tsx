@@ -1,5 +1,9 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { connectAuthEmulator, getAuth } from "firebase/auth";
+import {
+  connectDataConnectEmulator,
+  getDataConnect,
+} from "firebase/data-connect";
 import { createContext } from "react";
 
 const firebaseConfig = {
@@ -8,13 +12,23 @@ const firebaseConfig = {
   projectId: "PROJECT_ID",
   storageBucket: "PROJECT_ID.appspot.com",
   messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
+  appId: "APP_ID"
 };
 
 const firebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
 const auth = getAuth(firebaseApp);
+const dataconnect = getDataConnect(firebaseApp, {
+  connector: "movie-connector",
+  service: "your-service-name",
+  location: "your-location",
+});
+
+if (process.env.NODE_ENV === "development") {
+  // connectDataConnectEmulator(dataconnect, "127.0.0.1", 9399, false);
+  // connectAuthEmulator(auth, "http://localhost:9099");
+}
 
 const AuthContext = createContext(auth);
 

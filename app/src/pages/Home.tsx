@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from '@/components/carousel';
-// import { listMovies, ListMoviesResponse } from '@movie/dataconnect';
+import { handleGetTopMovies, handleGetLatestMovies } from '@/lib/MovieService';
 
 export default function HomePage() {
   const [topMovies, setTopMovies] = useState([]);
   const [latestMovies, setLatestMovies] = useState([]);
-  // const [topMovies, setTopMovies] = useState<ListMoviesResponse["movies"]>([]);
-  // const [latestMovies, setLatestMovies] = useState<ListMoviesResponse["movies"]>([]);
 
   useEffect(() => {
-    // async function fetchMovies() {
-    //   try {
-    //     const topMoviesResponse = await listMovies({ orderByRating: "DESC", limit: 10 });
-    //     const latestMoviesResponse = await listMovies({ orderByReleaseYear: "DESC", limit: 10 });
+    async function fetchMovies() {
+      const topMoviesData = await handleGetTopMovies(10);
+      const latestMoviesData = await handleGetLatestMovies(10);
 
-    //     setTopMovies(topMoviesResponse.data.movies);
-    //     setLatestMovies(latestMoviesResponse.data.movies);
-    //   } catch (error) {
-    //     console.error("Error fetching movies:", error);
-    //   }
-    // }
+      if (topMoviesData) setTopMovies(topMoviesData);
+      if (latestMoviesData) setLatestMovies(latestMoviesData);
+    }
 
-    // fetchMovies();
+    fetchMovies();
   }, []);
 
   return (
