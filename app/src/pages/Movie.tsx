@@ -50,7 +50,7 @@ export default function MoviePage() {
             (review) => review.user.id === authUser?.uid
           );
           fetchSimilarMovies(movieData.description).then((similarMovies) => {
-            setSimilarMovies(similarMovies)
+            setSimilarMovies(similarMovies?.filter(movie => movie.id !== movieData.id))
             setMovie(movieData);
           });
           setUserReview(userReview || null);
@@ -60,7 +60,7 @@ export default function MoviePage() {
 
     }
   }, [id, authUser]);
-  
+
   // Toggle favorite status for the movie
   const handleFavoriteToggle = async (e: React.MouseEvent) => {
     e.stopPropagation();

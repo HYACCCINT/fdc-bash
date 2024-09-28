@@ -399,9 +399,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440000"
+      actorId: "123e4567-e89b-12d3-a456-426614174021"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440001"
       actorId: "123e4567-e89b-12d3-a456-426614174021"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440001"
+      actorId: "123e4567-e89b-12d3-a456-426614174022"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440002"
@@ -409,9 +419,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440002"
+      actorId: "123e4567-e89b-12d3-a456-426614174023"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440003"
       actorId: "123e4567-e89b-12d3-a456-426614174023"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440003"
+      actorId: "123e4567-e89b-12d3-a456-426614174024"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440004"
@@ -419,9 +439,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440004"
+      actorId: "123e4567-e89b-12d3-a456-426614174025"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440005"
       actorId: "123e4567-e89b-12d3-a456-426614174025"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440005"
+      actorId: "123e4567-e89b-12d3-a456-426614174026"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440006"
@@ -429,9 +459,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440006"
+      actorId: "123e4567-e89b-12d3-a456-426614174027"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440007"
       actorId: "123e4567-e89b-12d3-a456-426614174027"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440007"
+      actorId: "123e4567-e89b-12d3-a456-426614174028"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440008"
@@ -439,9 +479,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440008"
+      actorId: "123e4567-e89b-12d3-a456-426614174029"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440009"
       actorId: "123e4567-e89b-12d3-a456-426614174029"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440009"
+      actorId: "123e4567-e89b-12d3-a456-426614174030"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440010"
@@ -449,9 +499,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440010"
+      actorId: "123e4567-e89b-12d3-a456-426614174031"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440011"
       actorId: "123e4567-e89b-12d3-a456-426614174031"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440011"
+      actorId: "123e4567-e89b-12d3-a456-426614174032"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440012"
@@ -459,9 +519,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440012"
+      actorId: "123e4567-e89b-12d3-a456-426614174033"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440013"
       actorId: "123e4567-e89b-12d3-a456-426614174033"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440013"
+      actorId: "123e4567-e89b-12d3-a456-426614174034"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440014"
@@ -469,9 +539,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440014"
+      actorId: "123e4567-e89b-12d3-a456-426614174035"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440015"
       actorId: "123e4567-e89b-12d3-a456-426614174035"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440015"
+      actorId: "123e4567-e89b-12d3-a456-426614174036"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440016"
@@ -479,9 +559,19 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440016"
+      actorId: "123e4567-e89b-12d3-a456-426614174037"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440017"
       actorId: "123e4567-e89b-12d3-a456-426614174037"
       role: "main"
+    }
+    {
+      movieId: "550e8400-e29b-41d4-a716-446655440017"
+      actorId: "123e4567-e89b-12d3-a456-426614174038"
+      role: "supporting"
     }
     {
       movieId: "550e8400-e29b-41d4-a716-446655440018"
@@ -489,67 +579,25 @@ movieActor_insertMany(
       role: "main"
     }
     {
+      movieId: "550e8400-e29b-41d4-a716-446655440018"
+      actorId: "123e4567-e89b-12d3-a456-426614174039"
+      role: "supporting"
+    }
+    {
       movieId: "550e8400-e29b-41d4-a716-446655440019"
       actorId: "123e4567-e89b-12d3-a456-426614174039"
       role: "main"
     }
-    # Supporting actors
     {
-      movieId: "550e8400-e29b-41d4-a716-446655440000"
-      actorId: "123e4567-e89b-12d3-a456-426614174021"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440001"
-      actorId: "123e4567-e89b-12d3-a456-426614174022"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440002"
-      actorId: "123e4567-e89b-12d3-a456-426614174023"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440003"
-      actorId: "123e4567-e89b-12d3-a456-426614174024"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440004"
-      actorId: "123e4567-e89b-12d3-a456-426614174025"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440005"
-      actorId: "123e4567-e89b-12d3-a456-426614174026"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440006"
-      actorId: "123e4567-e89b-12d3-a456-426614174027"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440007"
-      actorId: "123e4567-e89b-12d3-a456-426614174028"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440008"
-      actorId: "123e4567-e89b-12d3-a456-426614174029"
-      role: "supporting"
-    }
-    {
-      movieId: "550e8400-e29b-41d4-a716-446655440009"
-      actorId: "123e4567-e89b-12d3-a456-426614174030"
+      movieId: "550e8400-e29b-41d4-a716-446655440019"
+      actorId: "123e4567-e89b-12d3-a456-426614174020"
       role: "supporting"
     }
   ]
 )
-
   user_insertMany(
     data: [
-      { id: "SnLgOC3lN4hcIl69s53cW0Q8R1T2", username: "cynthia_w" }
+      { id: "SnLgOC3lN4hcIl69s53cW0Q8R1T2", username: "sherlock_h" }
       { id: "fep4fXpGWsaRpuphq9CIrBIXQ0S2", username: "hercule_p" }
       { id: "TBedjwCX0Jf955Uuoxk6k74sY0l1", username: "jane_d" }
     ]
