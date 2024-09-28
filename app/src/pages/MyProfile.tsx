@@ -37,10 +37,10 @@ export default function MyProfilePage() {
     }
   }
 
-  async function deleteReview(reviewId: string) {
+  async function deleteReview(reviewMovieId: string) {
     if (!authUser) return;
     try {
-      await handleDeleteReview(reviewId);
+      await handleDeleteReview(reviewMovieId);
       loadUserProfile();
     } catch (error) {
       console.error('Error deleting review:', error);
@@ -69,7 +69,7 @@ export default function MyProfilePage() {
               <p className="text-sm text-gray-400 mb-2">{review.reviewDate}</p>
               <p className="text-sm text-gray-300">{review.reviewText}</p>
               <button
-                onClick={() => deleteReview(review.id)}
+                onClick={() => deleteReview(review.movie.id)}
                 className="absolute bottom-2 right-2 text-red-500 hover:text-red-600"
               >
                 Delete Review

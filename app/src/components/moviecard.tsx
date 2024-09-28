@@ -31,8 +31,8 @@ export default function MovieCard({
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        checkIfFavorited();
       }
+      checkIfFavorited();
     });
 
     return () => unsubscribe();
