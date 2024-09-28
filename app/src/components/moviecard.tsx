@@ -1,9 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { MdFavorite, MdFavoriteBorder, MdStar } from 'react-icons/md';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { AuthContext } from '@/lib/firebase';
-import { handleAddFavoritedMovie, handleDeleteFavoritedMovie, handleGetIfFavoritedMovie } from '@/lib/MovieService';
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { MdFavorite, MdFavoriteBorder, MdStar } from "react-icons/md";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { AuthContext } from "@/lib/firebase";
+import {
+  handleAddFavoritedMovie,
+  handleDeleteFavoritedMovie,
+  handleGetIfFavoritedMovie,
+} from "@/lib/MovieService";
 
 interface MovieCardProps {
   id: string;
@@ -20,7 +24,7 @@ export default function MovieCard({
   imageUrl,
   rating,
   genre,
-  tags
+  tags,
 }: MovieCardProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isFavorited, setIsFavorited] = useState(false);
@@ -32,6 +36,8 @@ export default function MovieCard({
       if (user) {
         setUser(user);
         checkIfFavorited();
+      } else {
+        setIsFavorited(false);
       }
     });
 
@@ -43,7 +49,7 @@ export default function MovieCard({
       const isFav = await handleGetIfFavoritedMovie(id);
       setIsFavorited(isFav);
     } catch (error) {
-      console.error('Error checking if movie is favorited:', error);
+      console.error("Error checking if movie is favorited:", error);
     }
   }
 
@@ -59,7 +65,7 @@ export default function MovieCard({
       }
       setIsFavorited(!isFavorited);
     } catch (error) {
-      console.error('Error updating favorite status:', error);
+      console.error("Error updating favorite status:", error);
     }
   }
 
@@ -79,34 +85,46 @@ export default function MovieCard({
       <div>
         <img className="w-full h-64 object-cover" src={imageUrl} alt={title} />
         <div className="p-4">
-          <div className="font-bold text-lg mb-1 text-white whitespace-nowrap overflow-hidden overflow-ellipsis">{title}</div>
+          <div className="font-bold text-lg mb-1 text-white whitespace-nowrap overflow-hidden overflow-ellipsis">
+            {title}
+          </div>
           <div className="flex items-center text-yellow-500">
             <MdStar className="text-yellow-500" size={20} />
-            <span className="ml-1 text-gray-400">{rating ?? 'N/A'}</span>
+            <span className="ml-1 text-gray-400">{rating ?? "N/A"}</span>
           </div>
           <div className="mt-2 text-gray-400">
             {genre && (
-              <Link to={`/genre/${genre.toLowerCase()}`} className="block mb-1 hover:underline">
+              <Link
+                to={`/genre/${genre.toLowerCase()}`}
+                className="block mb-1 hover:underline"
+              >
                 {capitalize(genre)}
               </Link>
             )}
             <div className="flex flex-wrap gap-1">
               {tags?.map((tag, index) => (
-                <span key={index} className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">{capitalize(tag)}</span>
+                <span
+                  key={index}
+                  className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs"
+                >
+                  {capitalize(tag)}
+                </span>
               ))}
             </div>
           </div>
-          {user && (
-            <div className="mt-2 flex space-x-2 items-center">
-              <button
-                className="flex items-center justify-center p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
-                aria-label="Favorite"
-                onClick={handleFavoriteToggle}
-              >
-                {isFavorited ? <MdFavorite size={20} /> : <MdFavoriteBorder size={20} />}
-              </button>
-            </div>
-          )}
+          <div className="mt-2 flex space-x-2 items-center">
+            <button
+              className="flex items-center justify-center p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
+              aria-label="Favorite"
+              onClick={handleFavoriteToggle}
+            >
+              {isFavorited ? (
+                <MdFavorite size={20} />
+              ) : (
+                <MdFavoriteBorder size={20} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

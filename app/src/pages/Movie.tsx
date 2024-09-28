@@ -11,6 +11,7 @@ import {
   handleDeleteFavoritedMovie,
   handleAddReview,
   handleDeleteReview,
+  fetchSimilarMovies
 } from "@/lib/MovieService";
 
 export default function MoviePage() {
@@ -25,6 +26,7 @@ export default function MoviePage() {
 
   const [movie, setMovie] = useState(null);
   const [userReview, setUserReview] = useState(null);
+  const [similarMovies, setSimilarMovies] = useState([]);
 
   // Fetch the movie details and check if it's favorited when the user is authenticated
   useEffect(() => {
@@ -47,12 +49,18 @@ export default function MoviePage() {
           const userReview = movieData.reviews.find(
             (review) => review.user.id === authUser?.uid
           );
+          fetchSimilarMovies(movieData.description).then((similarMovies) => {
+            setSimilarMovies(similarMovies?.filter(movie => movie.id !== movieData.id))
+            setMovie(movieData);
+          });
           setUserReview(userReview || null);
         }
         setLoading(false);
       });
+
     }
   }, [id, authUser]);
+
   // Toggle favorite status for the movie
   const handleFavoriteToggle = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -251,6 +259,64 @@ export default function MoviePage() {
             )}
           </div>
         ))}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-2">Similar Movies</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {similarMovies.map((similarMovie) => (
+              <div
+                key={similarMovie.id}
+                className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer relative"
+              >
+                <Link to={`/movie/${similarMovie.id}`}>
+                  <img
+                    className="w-full h-64 object-cover"
+                    src={similarMovie.imageUrl}
+                    alt={similarMovie.title}
+                  />
+                </Link>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg mb-1 text-white">
+                    {similarMovie.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 overflow-y-scroll max-h-12">
+                    {similarMovie.description}
+                  </p>
+                  <div className="flex items-center text-yellow-500 mt-2">
+                    <MdStar className="text-yellow-500" size={20} />
+                    <span className="ml-1 text-gray-400">
+                      {similarMovie.rating}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {similarMovie.tags?.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs capitalize"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  {authUser && (
+                    <div className="mt-2 flex space-x-2 items-center">
+                      <button
+                        className="flex items-center justify-center p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
+                        aria-label="Favorite"
+                        onClick={handleFavoriteToggle}
+                      >
+                        {isFavorited ? (
+                          <MdFavorite size={20} />
+                        ) : (
+                          <MdFavoriteBorder size={20} />
+                        )}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,19 +1,22 @@
-// import { getMovieById, GetMovieByIdResponse } from "@movie/dataconnect";
-// import { addFavoritedMovie } from "@movie/dataconnect";
-// import { deleteFavoritedMovie } from "@movie/dataconnect";
+// import { listMovies, ListMoviesData, OrderDirection } from "@movie/dataconnect";
+// import { getMovieById, GetMovieByIdData } from "@movie/dataconnect";
+// import { GetActorByIdData, getActorById } from "@movie/dataconnect";
+
+// import { upsertUser } from "@movie/dataconnect";
+// import { getCurrentUser, GetCurrentUserData } from "@movie/dataconnect";
+
+// import { addFavoritedMovie, deleteFavoritedMovie } from "@movie/dataconnect";
+// import { addReview, deleteReview } from "@movie/dataconnect";
 // import { getIfFavoritedMovie } from "@movie/dataconnect";
-// import { addReview } from "@movie/dataconnect";
-// import { deleteReview } from "@movie/dataconnect";
-// import { GetActorByIdResponse, getActorById } from "@movie/dataconnect";
-// import { searchAll, SearchAllResponse } from "@movie/dataconnect";
-// import { listMovies, ListMoviesResponse } from "@movie/dataconnect";
-// import { getCurrentUser, GetCurrentUserResponse } from "@movie/dataconnect";
+
+// import { searchAll, SearchAllData } from "@movie/dataconnect";
+
 // import {
 //   searchMovieDescriptionUsingL2similarity,
-//   SearchMovieDescriptionUsingL2similarityResponse,
+//   SearchMovieDescriptionUsingL2similarityData,
 // } from "@movie/dataconnect";
-import { onAuthStateChanged, User } from 'firebase/auth';
-// import { upsertUser } from '@movie/dataconnect';
+
+import { onAuthStateChanged, User } from "firebase/auth";
 
 // Fetch top-rated movies
 export const handleGetTopMovies = async (
@@ -44,6 +47,10 @@ export const handleGetActorById = async (
   return null;
 };
 
+// Updates user table when user signs in
+export const handleAuthStateChange = (auth: any, setUser: (user: User | null) => void) => {
+  return () => {};
+};
 
 // Fetch current user profile
 export const handleGetCurrentUser = async (): Promise<any | null> => {
@@ -86,10 +93,7 @@ export const handleDeleteReview = async (movieId: string): Promise<void> => {
   return;
 };
 
-// Updates user table when user signs in
-export const handleAuthStateChange = (auth: any, setUser: (user: User | null) => void) => {
-  return () => {};
-};
+
 
 // Function to perform the search using the query and filters
 export const handleSearchAll = async (
@@ -107,6 +111,12 @@ export const handleSearchAll = async (
 // Perform vector-based search for movies based on description
 export const searchMoviesByDescription = async (
   query: string
+): Promise<any[]> => {
+  return [];
+};
+
+export const fetchSimilarMovies = async (
+  description: string
 ): Promise<any[]> => {
   return [];
 };

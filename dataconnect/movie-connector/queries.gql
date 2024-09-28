@@ -12,11 +12,6 @@
 #   }
 # }
 
-# List movies of a certain genre
-# query ListMoviesByGenre($genre: String!) @auth(level: PUBLIC) {
-
-# }
-
 # Get movie by id
 # query GetMovieById($id: UUID!) @auth(level: PUBLIC) {
 
@@ -34,11 +29,6 @@
 
 # Check if a movie is favorited by user
 # query GetIfFavoritedMovie($movieId: UUID!) @auth(level: USER) {
-
-# }
-
-# Check if an actor is favorited by user
-# query GetIfFavoritedActor($actorId: UUID!) @auth(level: USER) {
 
 # }
 
