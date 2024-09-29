@@ -1,4 +1,5 @@
 # List subset of fields for movies
+# TODO: Update ListMovies
 # query ListMovies @auth(level: PUBLIC) {
 #   movies{
 #     id
@@ -13,108 +14,22 @@
 # }
 
 # Get movie by id
-# query GetMovieById($id: UUID!) @auth(level: PUBLIC) {
-
-# }
+# TODO: Complete GetMovieById
 
 # Get actor by id
-# query GetActorById($id: UUID!) @auth(level: PUBLIC) {
+# TODO: Complete GetActorById
 
-# }
-
-# Get user by ID
-# query GetCurrentUser @auth(level: USER) {
-
-# }
+# Get current authenticated user
+# TODO: Complete GetCurrentUser
 
 # Check if a movie is favorited by user
-# query GetIfFavoritedMovie($movieId: UUID!) @auth(level: USER) {
-
-# }
+# TODO: Complete GetIfFavoritedMovie
 
 # Search for movies, actors, and reviews
-# query SearchAll(
-#   $input: String
-#   $minYear: Int!
-#   $maxYear: Int!
-#   $minRating: Float!
-#   $maxRating: Float!
-#   $genre: String!
-# ) @auth(level: PUBLIC) {
-#   moviesMatchingTitle: movies(
-#     where: {
-#       _and: [
-#         { releaseYear: { ge: $minYear } }
-#         { releaseYear: { le: $maxYear } }
-#         { rating: { ge: $minRating } }
-#         { rating: { le: $maxRating } }
-#         { genre: { contains: $genre } }
-#         { title: { contains: $input } }
-#       ]
-#     }
-#   ) {
-#     id
-#     title
-#     genre
-#     rating
-#     imageUrl
-#   }
-#   moviesMatchingDescription: movies(
-#     where: {
-#       _and: [
-#         { releaseYear: { ge: $minYear } }
-#         { releaseYear: { le: $maxYear } }
-#         { rating: { ge: $minRating } }
-#         { rating: { le: $maxRating } }
-#         { genre: { contains: $genre } }
-#         { description: { contains: $input } }
-#       ]
-#     }
-#   ) {
-#     id
-#     title
-#     genre
-#     rating
-#     imageUrl
-#   }
-#   actorsMatchingName: actors(where: { name: { contains: $input } }) {
-#     id
-#     name
-#     imageUrl
-#   }
-#   reviewsMatchingText: reviews(where: { reviewText: { contains: $input } }) {
-#     id
-#     rating
-#     reviewText
-#     reviewDate
-#     movie {
-#       id
-#       title
-#     }
-#     user {
-#       id
-#       username
-#     }
-#   }
-# }
+# TODO: Complete SearchAll
 
 # Search movie descriptions using L2 similarity with Vertex AI
-# query SearchMovieDescriptionUsingL2Similarity($query: String!)
-# @auth(level: PUBLIC) {
-  # movies_descriptionEmbedding_similarity(
-  #   compare_embed: { model: "textembedding-gecko@003", text: $query }
-  #   method: L2
-  #   within: 2
-  #   limit: 5
-  # ) {
-  #   id
-  #   title
-  #   description
-  #   tags
-  #   rating
-  #   imageUrl
-  # }
-# }
+# TODO: Complete SearchMovieDescriptionUsingL2Similarity
 
 
 # # The queries below are unused by the application, but are useful examples for more complex cases

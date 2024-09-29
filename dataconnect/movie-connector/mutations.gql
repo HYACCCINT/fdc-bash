@@ -1,34 +1,19 @@
 
 # Upsert (update or insert) a user based on their username
-# mutation UpsertUser($username: String!) @auth(level: USER) {
-
-# }
+# TODO: Complete UpsertUser
 
 # Add a movie to the user's favorites list
-# mutation AddFavoritedMovie($movieId: UUID!) @auth(level: USER) {
-
-# }
+# TODO: Complete UpsertUser
 
 # Remove a movie from the user's favorites list
-# mutation DeleteFavoritedMovie($movieId: UUID!) @auth(level: USER) {
-
-# }
+# TODO: Complete DeleteFavoritedMovie
 
 # Add a review for a movie
-# mutation AddReview(
-#   $movieId: UUID!
-#   $rating: Int!
-#   $reviewText: String!
-# ) @auth(level: USER) {
-
-# }
+# TODO: Complete AddReview
 
 # Delete a user's review for a movie
-# mutation DeleteReview(
-#   $movieId: UUID!
-# ) @auth(level: USER) {
+# TODO: Complete DeleteReview
 
-# }
 
 
 # The mutations below are unused by the application, but are useful examples for more complex cases
