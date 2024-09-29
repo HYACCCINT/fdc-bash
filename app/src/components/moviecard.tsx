@@ -32,6 +32,14 @@ export default function MovieCard({
   const navigate = useNavigate();
 
   useEffect(() => {
+    async function checkIfFavorited() {
+      try {
+        const isFav = await handleGetIfFavoritedMovie(id);
+        setIsFavorited(isFav);
+      } catch (error) {
+        console.error("Error checking if movie is favorited:", error);
+      }
+    }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -43,15 +51,6 @@ export default function MovieCard({
 
     return () => unsubscribe();
   }, [auth, id]);
-
-  async function checkIfFavorited() {
-    try {
-      const isFav = await handleGetIfFavoritedMovie(id);
-      setIsFavorited(isFav);
-    } catch (error) {
-      console.error("Error checking if movie is favorited:", error);
-    }
-  }
 
   async function handleFavoriteToggle(e: React.MouseEvent) {
     e.stopPropagation();
@@ -80,7 +79,7 @@ export default function MovieCard({
 
   return (
     <div
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-1000 transform hover:scale-105 cursor-pointer w-64"
+      className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-1000 transform hover:scale-105 cursor-pointer w-64 h-[440px]"
       onClick={handleCardClick}
     >
       <div>
