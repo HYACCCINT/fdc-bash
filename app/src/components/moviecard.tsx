@@ -88,9 +88,25 @@ export default function MovieCard({
           <div className="font-bold text-lg mb-1 text-white whitespace-nowrap overflow-hidden overflow-ellipsis">
             {title}
           </div>
+          <div className="flex flex-row gap-6 justify-between w-full">
+
+          <div className="flex space-x-2 items-center">
+            <button
+              className="flex items-center justify-center p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
+              aria-label="Favorite"
+              onClick={handleFavoriteToggle}
+            >
+              {isFavorited ? (
+                <MdFavorite size={20} />
+              ) : (
+                <MdFavoriteBorder size={20} />
+              )}
+            </button>
+          </div>
           <div className="flex items-center text-yellow-500">
             <MdStar className="text-yellow-500" size={20} />
             <span className="ml-1 text-gray-400">{rating ?? "N/A"}</span>
+          </div>
           </div>
           <div className="mt-2 text-gray-400">
             {genre && (
@@ -111,19 +127,6 @@ export default function MovieCard({
                 </span>
               ))}
             </div>
-          </div>
-          <div className="mt-2 flex space-x-2 items-center">
-            <button
-              className="flex items-center justify-center p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
-              aria-label="Favorite"
-              onClick={handleFavoriteToggle}
-            >
-              {isFavorited ? (
-                <MdFavorite size={20} />
-              ) : (
-                <MdFavoriteBorder size={20} />
-              )}
-            </button>
           </div>
         </div>
       </div>

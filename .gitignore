@@ -1,8 +1,7 @@
 .DS_Store
-dataconnect/.dataconnect/
-app/src/lib/dataconnect/
 dataconnect/node_modules/
 .firebase/
-*/node_modules
-.dataconnect/
+app/node_modules
 .log
+app/dist/
+dataconnect/.dataconnect

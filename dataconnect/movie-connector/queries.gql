@@ -107,6 +107,7 @@ query GetCurrentUser @auth(level: USER) {
         releaseYear
         rating
         description
+        tags
         metadata: movieMetadatas_on_movie {
           director
         }
