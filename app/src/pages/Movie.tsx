@@ -23,7 +23,7 @@ export default function MoviePage() {
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const [reviewText, setReviewText] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
 
   const [movie, setMovie] = useState(null);
   const [userReview, setUserReview] = useState(null);
