@@ -39,7 +39,7 @@ export default function VectorSearchPage() {
           />
           <button
             type="submit"
-            className="ml-2 p-4 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            className="ml-2 p-4 rounded bg-slate-600 text-white hover:bg-slate-700 transition-colors"
           >
             Search
           </button>

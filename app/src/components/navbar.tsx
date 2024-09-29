@@ -29,9 +29,9 @@ export default function Navbar() {
     <nav className="bg-black p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <Link to="/" className="flex items-center text-white text-lg font-bold">
+          <Link to="/" className="flex items-center">
             <img src={firebaseLogo} alt="Firebase Logo" width={30} height={30} className="mr-2" />
-            FriendlyMovies
+            <span className=" text-white text-lg font-bold hidden md:block">FriendlyMovies</span>
           </Link>
           <Link to="/vectorsearch" className="text-gray-200 hover:text-white">
             Vector Search
