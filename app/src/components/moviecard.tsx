@@ -58,12 +58,13 @@ export default function MovieCard({
     e.preventDefault();
     if (!user) return;
     try {
-      if (isFavorited) {
+      const isFav = await handleGetIfFavoritedMovie(id);
+      if (isFav) {
         await handleDeleteFavoritedMovie(id);
       } else {
         await handleAddFavoritedMovie(id);
       }
-      setIsFavorited(!isFavorited);
+      setIsFavorited(!isFav);
     } catch (error) {
       console.error("Error updating favorite status:", error);
     }
