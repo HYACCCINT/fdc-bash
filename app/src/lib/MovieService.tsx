@@ -5,9 +5,8 @@
 // import { upsertUser } from "@movie/dataconnect";
 // import { getCurrentUser, GetCurrentUserData } from "@movie/dataconnect";
 
-// import { addFavoritedMovie, deleteFavoritedMovie } from "@movie/dataconnect";
+// import { addFavoritedMovie, deleteFavoritedMovie, getIfFavoritedMovie } from "@movie/dataconnect";
 // import { addReview, deleteReview } from "@movie/dataconnect";
-// import { getIfFavoritedMovie } from "@movie/dataconnect";
 
 // import { searchAll, SearchAllData } from "@movie/dataconnect";
 
@@ -92,8 +91,6 @@ export const handleAddReview = async (
 export const handleDeleteReview = async (movieId: string): Promise<void> => {
   return;
 };
-
-
 
 // Function to perform the search using the query and filters
 export const handleSearchAll = async (
